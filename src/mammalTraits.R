@@ -6,38 +6,6 @@ if (file.exists("data/combined_traits_data.csv")) {
   combined_traits_data <- read_csv("data/combined_traits_data.csv")
 } else {
 
-#Step 3 - Extract all occurrences available in GBIF for mammals overlapping with ecoregions from step 2. Filter species >30 records
-
-#gbif_taxon_keys <- readr::read_csv("mammal_sps.csv") %>%
-# pull("x") %>% #use the sps names from the file
-# name_backbone_checklist() %>% #match to backbone
-# filter(!matchType == "NONE") %>% #get matched names
-# pull(usageKey) #get the GBIF taxon keys
-
-#occ_download(pred_in("taxonKey", gbif_taxon_keys),
-#           format = "SIMPLE_CSV",
-#           user = "maria_ines_silva", pwd = "SRIT2024!", email = "ncisines@gmail.com")
-
-#occ_download_wait('0134269-240321170329656') # checks if download is finished
-d <- occ_download_get('0134269-240321170329656') #retrieve the download from GBIF to my computer
-gbif_data <- occ_download_import(d) #load the download from my computer to Rstudio
-
-GBIF_mammal_sps <- gbif_data %>%
-  drop_na(c(decimalLatitude, decimalLongitude)) %>% #remove occurrences without coordinates
-  group_by(species) %>%
-  filter(n() > 30)  #filter individuals with more than 30 occurrences
-#summary(GBIF_mammal_sps)
-
-#Write species occurences, with the following variables, species name, geographic coordinates and year of occurrence, into a csv file
-write.csv(GBIF_mammal_sps[, c("species", "decimalLatitude", "decimalLongitude", "year")],
-          "GBIF_mammal_30+occurrences.csv",
-          row.names = FALSE)
-gc()
-
-
-target_sps <- unique(GBIF_mammal_sps$species) #species that inhabit tropical or boreal forests with more than 30 occurrences
-#TOTAL = 2512 target sps
-
 HomeRangeData <- GetHomeRangeData()
 HomeRange_sps <- HomeRangeData %>%
   dplyr::filter(Species %in% mammal_sps) %>%
