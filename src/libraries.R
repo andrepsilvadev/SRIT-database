@@ -4,7 +4,6 @@
 
 library(easypackages)
 easypackages::packages(
-  "RangeShiftR",
   "tidyverse",
   "readr",
   "tidyr",

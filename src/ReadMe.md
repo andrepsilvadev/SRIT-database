@@ -18,28 +18,5 @@
     globalSuitability.R <- produces input suitability landscapes with species specific resolution for the different models
         (old simulatedLandscapes.R) 
 
-## disturbance
-(simulation-specific module)
-    activityArea <- identifies the area the area disturbed by human activity
-    species.R <- identifies species for which the IUCN range overlaps with the activity area
-    disturbance.R <- translates disturbance within the activity area to suitability landscapes (e.g. conversion to bare land)
-    landscapeResolution.R <- transform suitability landscapes into landscapes with species-specific modelling resolution. Can also create test cells for quick simulation tests. 
-
-## dataframes
-(simulation-specific module)
-    rangeShifterDataframe.R <-
-    metaRangeDataframe.R <- (being created by Afonso)
-
-## simulation
-(simulation-specific module)
-    simulationSettings.R <- 
-    rangeshifter_localcalibrationb.R <-
-    simulation_beforeAfterDisturbance.R <-
-    scenarioProjections.R <-
-    modelValidation.R <-
-
-## resilience
-    resilienceMetrics.R <-
-
-
-SRIT Data storage can be found at: https://drive.google.com/drive/folders/1wkmRrCmzI3pzR7jNDEA-jypK6BHyxZ5c?usp=drive_link
+Files for users and developers can be found at:
+https://drive.google.com/drive/folders/1gur2K5EGnqHHCz1oui8ms6ZOz8LxGFQD?usp=drive_link

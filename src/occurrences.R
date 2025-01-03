@@ -2,7 +2,7 @@
 ## Andre P. Silva ##
 ## January 2nd, 2025 ##
 
-# Use IUCN species names
+# Use IUCN species names and ranges
 # downloaded manually, later find a way to download automatically through R
 IUCN_mammals <- sf::st_read("./data/MAMMALS_TERRESTRIAL_ONLY/MAMMALS_TERRESTRIAL_ONLY.shp")
 mammal_sps <- unique(IUCN_mammals$sci_name)
