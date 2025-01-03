@@ -1,4 +1,4 @@
-# SRIT Modules 
+# SRIT - database modules 
 
 ## settings & libraries
     generalSettings.R <-
