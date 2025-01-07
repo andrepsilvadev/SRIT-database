@@ -1,5 +1,5 @@
 ## Example ##
-## Andre P. Silva & Ines Silva ##
+## Andre P. Silva & Ines Silva & Afonso Barrocal ##
 ## Last major update: December 30th, 2024 ##
 ## Description: Based on srit_1.2.1_28Aug.R
 
