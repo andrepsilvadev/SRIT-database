@@ -61,6 +61,7 @@ gc()
 # remove space bewteen species names
 target_sps_Suit$species <- gsub(" ", "", target_sps_Suit$species)
 
+#the following line can be skipped. For some data it does not work, as the levels were already dropped before
 # drop factors levels
 target_sps_Suit$species <- droplevels(target_sps_Suit) #for some reason filter levels are still showing up that's why I need this line
 gc()
