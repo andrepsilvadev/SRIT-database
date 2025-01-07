@@ -50,7 +50,7 @@ ncdf2rast <- function(i,nc){
               crs=CRS(SRS_string="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+ towgs84=0,0,0"))
   
   # free unused memory
-  gc()
+  invisible(gc())
   
   # creat SpatRaster object
   r <- terra::rast(r)
