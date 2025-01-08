@@ -8,3 +8,7 @@
 - Incorporate global and local drivers of suitability - for instance climatic suitability is not yet incorporated (global driver) 
 run sdms for suitability landscapes
 - a mechanistic estimation of the niche see stefan example with metarange
+- how would the suitability scores be calculated if we run sdms
+
+#202501007
+- globalSuitability.R needs to be tested - crashed in the gaia step

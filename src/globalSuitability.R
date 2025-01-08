@@ -51,6 +51,10 @@ gc()
 # remove row names since they're a separate column
 row.names(target_sps_Suit) <- NULL
 
+# write a csv with this data (so I don't i have to wait to run this again)
+# later change csv name
+write.csv(target_sps_Suit, "./data/global_suitability_landscapes/suitabilityScores_for_target_sps_26Aug.csv", row.names = FALSE)
+
 # remove uncessary objects
 rm(list_of_SI)
 
