@@ -63,8 +63,8 @@ target_sps_Suit$species <- gsub(" ", "", target_sps_Suit$species)
 
 #the following line can be skipped. For some data it does not work, as the levels were already dropped before
 # drop factors levels
-target_sps_Suit$species <- droplevels(target_sps_Suit) #for some reason filter levels are still showing up that's why I need this line
-gc()
+#target_sps_Suit$species <- droplevels(target_sps_Suit) #for some reason filter levels are still showing up that's why I need this line
+#gc()
 
 # save global suitability landscapes
 # THIS STEP WAS RUN IN COMPUTER CLUSTER - GAIA2 #
