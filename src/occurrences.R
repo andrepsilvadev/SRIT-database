@@ -1,10 +1,10 @@
 ## Taxa occurrences ##
-## Andre P. Silva ##
-## January 2nd, 2025 ##
+## Andre P. Silva & Afonso Barrocal ##
+## January 7th, 2025 ##
 
 # Use IUCN species names and ranges
 # downloaded manually, later find a way to download automatically through R
-IUCN_mammals <- sf::st_read("./data/MAMMALS_TERRESTRIAL_ONLY/MAMMALS_TERRESTRIAL_ONLY.shp")
+IUCN_mammals <- sf::st_read("./trait_datasets/MAMMALS_TERRESTRIAL_ONLY/MAMMALS_TERRESTRIAL_ONLY.shp")
 mammal_sps <- unique(IUCN_mammals$sci_name)
 
 # for testing only
@@ -28,12 +28,12 @@ test <- occ_download(
 
 # check if download is finished
 occ_download_wait('0055274-241126133413365')
-gc()
+invisible(gc())
 
 # retrieve the download from GBIF to my computer
 d <- occ_download_get(
     key = '0055274-241126133413365',
-    path = "./data"
+    path = "./trait_datasets"
 )
 
 # import download to current session
@@ -50,7 +50,7 @@ GBIF_mammal_sps <-
 # Write species occurences, with the subselection of variables
 write.csv(
     GBIF_mammal_sps[, c("species", "decimalLatitude", "decimalLongitude", "year")],
-    "./data/GBIF_mammal_30+occurrences_speciesTest.csv",
+    "./trait_datasets/GBIF_mammal_30+occurrences_speciesTest.csv",
     row.names = FALSE
     )
-gc()
+invisible(gc())
