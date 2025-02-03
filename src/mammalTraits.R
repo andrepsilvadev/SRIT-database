@@ -4,11 +4,10 @@
 
 ##########################################################################
 ## Things to change: ##
-##   1. Read Santini et al. (check abundances);
-##   2. See what are the limiting factors in the database;
-##   3. See mass from HerbiTrait and CarniTrait (do they have new data?);
-##   4. Make more comments;
-##   5. (...)
+##   1 See what are the limiting factors in the database;
+##   2. See mass from HerbiTrait and CarniTrait (do they have new data?);
+##   3. Make more comments;
+##   4. (...)
 ##########################################################################
 
 if (file.exists("combined_traits_data.csv")) {
