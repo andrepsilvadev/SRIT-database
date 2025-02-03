@@ -4,7 +4,7 @@
 
 ##########################################################################
 ## Things to change: ##
-##   1 See what are the limiting factors in the database;
+##   1  See what are the limiting factors in the database;
 ##   2. See mass from HerbiTrait and CarniTrait (do they have new data?);
 ##   3. Make more comments;
 ##   4. (...)
