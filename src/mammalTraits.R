@@ -127,9 +127,14 @@ if (file.exists("combined_traits_data.csv")) {
     distinct()
   invisible(gc())
   
+  # remove unnecessary objects to increase internal memory
+  rm(biomes,continent,IUCN_mammals)
+  invisible(gc())
+  
   ################################################################################
   ## FINAL DATASET ##
   
+  # combining traits
   combined_traits_data <- sps_traits %>%
     left_join(combine, by = c('sci_name' = 'iucn2020_binomial')) %>%
     left_join(PHYLACINE1.2_traits, by = c("sci_name" = "Binomial.1.2")) %>%
@@ -142,6 +147,14 @@ if (file.exists("combined_traits_data.csv")) {
                   'Diet.Meat', 'Diet.Plant', 'Mass.g', 'max_longevity_d', 'weaning_mass_g',
                   'litter_size_n', 'litters_per_year_n', 'Mating System','PredMd','up75',
                   'trophic_level', 'Max_Home_Range_km2', 'Min_Home_Range_km2') %>%
+    distinct()
+  
+  # process family and order data
+  combined_traits_data$family.x <- str_to_title(combined_traits_data$family.x)
+  combined_traits_data$order_ <- str_to_title(combined_traits_data$order_)
+  
+  # prepared for RangeShifter
+  combined_traits_data <- combined_traits_data %>%
     rename('Species' = 'sci_name',
            'Biome' = 'BIOME_NAME',
            'Region' = 'CONTINENT',
@@ -178,7 +191,7 @@ if (file.exists("combined_traits_data.csv")) {
   final_mammal_traits <- combined_traits_data %>% drop_na()
   
   # csv file with trait data
-  write.csv(final_mammal_traits, "mammalTraits.csv", row.names = FALSE)
+  write.csv(final_mammal_traits, paste0("mammalTraits_",Sys.Date(),".csv"), row.names = FALSE)
   
   complete_data_sps <-data.frame(unique(final_mammal_traits$Species))
   names(complete_data_sps) <-"Species"
