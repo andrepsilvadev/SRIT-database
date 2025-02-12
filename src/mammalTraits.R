@@ -10,7 +10,7 @@
 ##   4. (...)
 ##########################################################################
 
-if (file.exists(list.files(pattern = "mammalTraits_.*\\.csv$"))) {
+if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   mammalTraits_data <- read_csv(list.files(pattern = "mammalTraits_.*\\.csv$"))
 } else {
 
