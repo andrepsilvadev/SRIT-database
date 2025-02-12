@@ -1,6 +1,6 @@
 ## Mammal traits ##
 ## Afonso Barrocal & Inês Silva ##
-## February 3rd, 2025 ##
+## February 12th, 2025 ##
 
 ##########################################################################
 ## Things to change: ##
@@ -10,8 +10,8 @@
 ##   4. (...)
 ##########################################################################
 
-if (file.exists("combined_traits_data.csv")) {
-  combined_traits_data <- read_csv("combined_traits_data.csv")
+if (file.exists(list.files(pattern = "mammalTraits_.*\\.csv$"))) {
+  mammalTraits_data <- read_csv(list.files(pattern = "mammalTraits_.*\\.csv$"))
 } else {
 
   ### EXTRACT HOME RANGE DATA ###
