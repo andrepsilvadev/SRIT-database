@@ -151,7 +151,7 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
                   'litter_size_n', 'litters_per_year_n', 'Mating System','PredMd','up75',
                   'trophic_level', 'Max_Home_Range_km2', 'Min_Home_Range_km2') %>%
     distinct() %>% 
-    drop_na()
+    drop_na() # maybe this should be dropped 
   
   # csv file with trait data
   write.csv(combined_traits_data, paste0("mammalTraits_",Sys.Date(),".csv"), row.names = FALSE)
