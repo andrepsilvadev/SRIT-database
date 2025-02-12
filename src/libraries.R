@@ -24,6 +24,7 @@ easypackages::packages(
   "DT",
   "HomeRange",
   "naniar",
+  "crayon",
   prompt = FALSE)
 
 ### trait data is on github
