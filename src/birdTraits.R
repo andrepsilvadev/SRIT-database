@@ -4,10 +4,9 @@
 
 ##########################################################################
 ## Things to change: ##
-##   1. Read Santini et al. (check abundances);
-##   2. See what are the limiting factors in the database;
-##   3. Make more comments;
-##   4. (...)
+##   1. See what are the limiting factors in the database;
+##   2. Make more comments;
+##   3. (...)
 ##########################################################################
 
 if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
@@ -83,13 +82,7 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   combined_traits_data <- sps_traits %>%
     left_join(storchova, by = c('sci_name' = 'iucn2020_binomial')) %>%
     left_join(avonet, by = c("sci_name" = "Species1")) %>%
-    left_join(sps_biome, by = c('sci_name' = 'Species'))
-  
-  ## see later
-    dplyr::select('sci_name', 'family.x', 'order_', 'BIOME_NAME', 'CONTINENT',
-                  'Diet.Meat', 'Diet.Plant', 'Mass.g', 'max_longevity_d', 'weaning_mass_g',
-                  'litter_size_n', 'litters_per_year_n', 'Mating System','PredMd','up75',
-                  'trophic_level', 'Max_Home_Range_km2', 'Min_Home_Range_km2') %>%
+    left_join(sps_biome, by = c('sci_name' = 'Species')) %>%
     distinct() %>% 
     drop_na()
   
