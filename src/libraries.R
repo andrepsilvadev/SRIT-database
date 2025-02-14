@@ -1,6 +1,6 @@
 ## libraries ##
 ## Andre P. Silva & Afonso Barrocal ##
-## January 7th, 2025 ##
+## January 12th, 2025 ##
 
 library(easypackages)
 easypackages::packages(
