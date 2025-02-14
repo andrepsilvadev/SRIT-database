@@ -105,6 +105,7 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   
   # import the biome data
   biomes <- read_sf("ecoregions/Ecoregions2017.shp") %>%
+    st_make_valid() %>%
     replace_with_na(list(BIOME_NAME = c("N/A"))) %>%
     select('BIOME_NAME') %>%
     distinct() %>%
