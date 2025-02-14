@@ -40,6 +40,9 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
     n_sps = c(length(unique(avonet$Species1)), length(unique(storchova$Species))))
   invisible(gc())
   
+  # work on a flat Earth
+  sf_use_s2(FALSE)
+  
   # import the biome data
   biomes <- read_sf("ecoregions/Ecoregions2017.shp") %>%
     st_make_valid() %>%
