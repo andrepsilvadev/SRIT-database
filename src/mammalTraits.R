@@ -1,7 +1,6 @@
-
 ## Mammal traits ##
 ## Afonso Barrocal & Inês Silva ##
-## February 12th, 2025 ##
+## February 14th, 2025 ##
 
 ##########################################################################
 ## Things to change: ##
@@ -152,7 +151,7 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
                   'litter_size_n', 'litters_per_year_n', 'Mating System','PredMd','up75',
                   'trophic_level', 'Max_Home_Range_km2', 'Min_Home_Range_km2') %>%
     distinct() %>% 
-    drop_na() # maybe this should be dropped 
+    drop_na()
   
   # csv file with trait data
   write.csv(combined_traits_data, paste0("mammalTraits_",Sys.Date(),".csv"), row.names = FALSE)
