@@ -26,11 +26,10 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
                         promote_to_multi = T, type = 0) %>%
     ensure_multipolygons() %>%
     st_make_valid()
+  invisible(gc())
     
-  
   # import traits from the IUCN shapefile
   sps_traits<- unique(IUCN_birds$sci_name)
-  invisible(gc())
   
   # import AVONET data (https://doi.org/10.1111/ele.13898)
   avonet <- read_excel("trait_datasets/AVONET Supplementary dataset 1.xlsx", 
