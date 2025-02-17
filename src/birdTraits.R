@@ -18,6 +18,9 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   
   ## Extract trait data and build a R dataframe with extracted data
   
+  # work on a flat Earth
+  sf_use_s2(FALSE)
+  
   # import bird distribution data from BirdLife (IUCN)
   IUCN_birds <- read_sf("trait_datasets/species/BOTW_2024_2.gpkg")
   
@@ -39,12 +42,8 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
     n_sps = c(length(unique(avonet$Species1)), length(unique(storchova$Species))))
   invisible(gc())
   
-  # work on a flat Earth
-  sf_use_s2(FALSE)
-  
   # import the biome data
   biomes <- read_sf("ecoregions/Ecoregions2017.shp") %>%
-    st_make_valid() %>%
     replace_with_na(list(BIOME_NAME = c("N/A"))) %>%
     select('BIOME_NAME') %>%
     distinct() %>%
@@ -60,7 +59,7 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   invisible(gc())
   
   # intersect IUCN and ecoregions and continents shapefiles
-  biomes <- st_intersection(biomes,IUCN_birds)
+  biomes <- st_intersection(st_make_valid(biomes),st_make_valid(IUCN_birds))
   invisible(gc())
   
   # subset of the necessary variables (biome and sps scientific names)
@@ -80,9 +79,9 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   
   # combining traits
   combined_traits_data <- sps_traits %>%
-    left_join(storchova, by = c('sci_name' = 'iucn2020_binomial')) %>%
+    left_join(storchova, by = c('sci_name' = 'Species')) %>%
     left_join(avonet, by = c("sci_name" = "Species1")) %>%
-    left_join(sps_biome, by = c('sci_name' = 'Species')) %>%
+    left_join(sps_biome, by = c('sci_name' = 'sci_name')) %>%
     distinct() %>% 
     drop_na()
   
@@ -93,4 +92,5 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   complete_data_sps <-data.frame(unique(combined_traits_data$sci_name))
   names(complete_data_sps) <-"Species"
   print(paste("NºSpecies:",nrow(complete_data_sps)))
+  
 }
