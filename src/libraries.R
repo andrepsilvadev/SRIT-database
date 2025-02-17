@@ -26,6 +26,7 @@ easypackages::packages(
   "naniar",
   "crayon",
   "gdalUtilities",
+  "BIEN",
   prompt = FALSE)
 
 ### trait data is on github
