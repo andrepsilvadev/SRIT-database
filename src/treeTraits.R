@@ -2,6 +2,10 @@
 ## Afonso Barrocal ##
 ## February 17th, 2025 ##
 
+##########################################
+## NOT TESTED YET - JUST AN ONLINE COPY ##
+##########################################
+
 ##########################################################################
 ## Things to change: ##
 ##   1. Process trait data (from BIEN);
