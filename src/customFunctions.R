@@ -1,6 +1,50 @@
 ## Custom functions ##
-## Andre P. Silva ##
-## June 5th, 2024 ##
+## Andre P. Silva & Afonso Barrocal ##
+## February 17th, 2025 ##
+
+## spatial processing functions -----------------------------------------------
+
+surf2poly <- function(obj) {
+  
+  out_geom_txt = obj |> 
+    sf::st_geometry() |> 
+    sf::st_as_text() |> 
+    gsub(pattern = "MULTISURFACE (", replacement = '', fixed = TRUE) |> 
+    gsub(pattern = "COMPOUNDCURVE (", replacement = '', fixed = TRUE) |> 
+    gsub(pattern = "CURVEPOLYGON (", replacement = '', fixed = TRUE)
+  
+  out = obj |> 
+    sf::st_set_geometry(
+      value = sf::st_as_sfc(
+        out_geom_txt, 
+        crs = sf::st_crs(obj)
+      )
+    )
+  
+  idx = which(sf::st_geometry_type(out) == "LINESTRING")
+  
+  out_greenlight = out[-idx, ]
+  out_redlight = out |> 
+    dplyr::slice(idx) |> 
+    sf::st_cast(to = "POLYGON") |> 
+    sf::st_cast(to = "MULTIPOLYGON")
+  
+  out = rbind(out_greenlight, out_redlight) |> 
+    sf::st_cast("MULTIPOLYGON") |> 
+    sf::st_make_valid()
+  
+  return(out)
+  
+}
+
+ensure_multipolygons <- function(X) {
+  tmp1 <- tempfile(fileext = ".gpkg")
+  tmp2 <- tempfile(fileext = ".gpkg")
+  st_write(X, tmp1)
+  ogr2ogr(tmp1, tmp2, f = "GPKG", nlt = "MULTIPOLYGON")
+  Y <- st_read(tmp2)
+  st_sf(st_drop_geometry(X), geom = st_geometry(Y))
+}
 
 ## landscape functions --------------------------------------------------------
 

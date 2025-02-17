@@ -22,7 +22,11 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   sf_use_s2(FALSE)
   
   # import bird distribution data from BirdLife (IUCN)
-  IUCN_birds <- read_sf("trait_datasets/species/BOTW_2024_2.gpkg")
+  IUCN_birds <- read_sf("trait_datasets/species/BOTW_2024_2.gpkg",
+                        promote_to_multi = T, type = 0) %>%
+    ensure_multipolygons() %>%
+    st_make_valid()
+    
   
   # import traits from the IUCN shapefile
   sps_traits<- unique(IUCN_birds$sci_name)

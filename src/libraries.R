@@ -25,6 +25,7 @@ easypackages::packages(
   "HomeRange",
   "naniar",
   "crayon",
+  "gdalUtilities",
   prompt = FALSE)
 
 ### trait data is on github
