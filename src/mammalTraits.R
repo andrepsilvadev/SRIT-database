@@ -1,6 +1,6 @@
 ## Mammal traits ##
 ## Afonso Barrocal & Inês Silva ##
-## February 14th, 2025 ##
+## February 17th, 2025 ##
 
 ##########################################################################
 ## Things to change: ##
@@ -37,7 +37,6 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   extra_sps_HomeRange <- out[is.na(out$target_sps), 2]
   total_target_sps <- c(target_sps, extra_sps_HomeRange)
   
-  ### ADDITION 22nd APRIL ###
   ### MAX HOMERANGE PER SPECIES ###
   
   # processing data (tacking character values from the isopleth column)
