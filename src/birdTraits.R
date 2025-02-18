@@ -1,12 +1,15 @@
 ## Birds traits ##
 ## Afonso Barrocal ##
-## February 17th, 2025 ##
+## February 18th, 2025 ##
 
 ##########################################################################
 ## Things to change: ##
-##   1. See what are the limiting factors in the database;
-##   2. Make more comments;
-##   3. (...)
+##   1. Update code so that it doesn't have to make spatial processing;
+##   2. Check Wang et al. (2017) database;
+##   3. Search for tropical trait dataset;
+##   4. See what are the limiting factors in the database;
+##   5. Make more comments;
+##   6. (...)
 ##########################################################################
 
 if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
@@ -29,7 +32,7 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   invisible(gc())
     
   # import traits from the IUCN shapefile
-  sps_traits<- unique(IUCN_birds$sci_name)
+  sps_traits <- unique(IUCN_birds$sci_name)
   
   # import AVONET data (https://doi.org/10.1111/ele.13898)
   avonet <- read_excel("trait_datasets/AVONET Supplementary dataset 1.xlsx", 
