@@ -1,6 +1,6 @@
 ## libraries ##
 ## Andre P. Silva & Afonso Barrocal ##
-## January 12th, 2025 ##
+## February 19th, 2025 ##
 
 library(easypackages)
 easypackages::packages(
@@ -27,6 +27,7 @@ easypackages::packages(
   "crayon",
   "gdalUtilities",
   "BIEN",
+  "dismo",
   prompt = FALSE)
 
 ### trait data is on github
