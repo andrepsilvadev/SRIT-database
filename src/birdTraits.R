@@ -2,9 +2,14 @@
 ## Afonso Barrocal ##
 ## February 19th, 2025 ##
 
-#######################################
-## Error:   got 'std::bad_alloc'     ##
-#######################################
+####################################################################################
+##                                                                                ##
+## Error:   got 'std::bad_alloc'                                                  ##
+## But it works - the 'ensure_multipolygons works!!!                              ##
+## Bad_alloc issue might be solvable by dividing the shapefile into n-folds...    ##
+## I'll try it by using the 'dismo::kfold' function with an 'if' condition!!!     ##
+##                                                                                ##
+####################################################################################
 
 ##########################################################################
 ## Things to change: ##
