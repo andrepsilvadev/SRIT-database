@@ -22,8 +22,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   sf_use_s2(FALSE)
   
   # import tree distribution data from IUCN
-  IUCN_trees <- read_sf("trait_datasets/TREES/TREES.shp") %>%
-    st_make_valid()
+  IUCN_trees <- read_sf("trait_datasets/TREES/TREES.shp")
   invisible(gc())
     
   # import traits from the IUCN shapefile
@@ -34,8 +33,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   invisible(gc())
   
   # import BIEN database (https://doi.org/10.1111/2041-210X.12861)
-  bien_traits <- do.call(rbind,lapply(sps_traits$sci_name,
-                                      FUN = BIEN_trait_species))
+  bien_traits <- do.call(rbind,lapply(sps_traits$sci_name, FUN = BIEN_trait_species))
   
   # collect trait names and units from BIEN database
   traits_info <- bien_traits %>% 
