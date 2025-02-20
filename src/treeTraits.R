@@ -4,9 +4,10 @@
 
 ##########################################################################
 ## Things to change: ##
-##   1. See what are the limiting factors in the database;
-##   2. Make more comments;
-##   3. (...)
+##   1. Ask André if he wants to include morfological data;
+##   2. See what are the limiting factors in the database;
+##   3. Make more comments;
+##   4. (...)
 ##########################################################################
 
 if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
@@ -102,7 +103,8 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   tree_traits2$`whole plant growth form` <- tolower(tree_traits2$`whole plant growth form`)
   tree_traits2 <- tree_traits2 %>%
     group_by(scrubbed_species_binomial) %>%
-    summarise(across(everything(), ~ .[order(is.na(.))][1]), .groups = 'drop')
+    summarise(across(everything(), ~ .[order(is.na(.))][1]), .groups = 'drop') %>%
+    replace_with_na_all(condition = ~.x == "NaN")
   
   # table with info on the n of species per dataset
   datasets_info <- tibble(
@@ -151,8 +153,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
     left_join(tree_traits, by = c('sci_name' = 'scrubbed_species_binomial')) %>%
     left_join(tree_traits2, by = c('sci_name' = 'scrubbed_species_binomial')) %>%
     left_join(sps_biome, by = c('sci_name' = 'sci_name')) %>%
-    distinct() %>% 
-    drop_na()
+    distinct() # %>% drop_na() <- There is no complete line!!!!
   
   # csv file with trait data
   write.csv(combined_traits_data, paste0("treeTraits_",Sys.Date(),".csv"), row.names = FALSE)
