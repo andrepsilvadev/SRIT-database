@@ -115,7 +115,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   # import the biome data
   biomes <- read_sf("ecoregions/Ecoregions2017.shp") %>%
     replace_with_na(list(BIOME_NAME = c("N/A"))) %>%
-    select('BIOME_NAME') %>%
+    dplyr::select('BIOME_NAME') %>%
     distinct() %>%
     drop_na()
   invisible(gc())
