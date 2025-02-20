@@ -32,12 +32,28 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
     st_drop_geometry()
   invisible(gc())
   
-  # import life-history traits from BIEN database (https://doi.org/10.1111/2041-210X.12861)
-  bien_traits <- do.call(rbind,lapply(sps_traits$sci_name, FUN = BIEN_trait_species))
+  # import traits from BIEN database (https://doi.org/10.1111/2041-210X.12861)
+  if(length(list.files(path = "./trait_datasets", pattern = "bien_traits_.*\\.csv$")) != 0){
+    # import traits from .csv file
+    bien_traits <- read.csv(list.files(path = "./trait_datasets", pattern = "bien_traits_.*\\.csv$", full.names = TRUE))
+  } else {
+    # import life-history traits from BIEN R package
+    bien_traits <- do.call(rbind,lapply(sps_traits$sci_name, FUN = BIEN_trait_species))
+    
+    # csv file with trait data
+    write.csv(bien_traits, paste0("trait_datasets/bien_traits_",Sys.Date(),".csv"), row.names = FALSE)
+    
+    # remove unnecessary objects to free internal memory
+    rm(bien_traits)
+    invisible(gc())
+    
+    # import traits from .csv file
+    bien_traits <- read.csv(list.files(path = "./trait_datasets", pattern = "bien_traits_.*\\.csv$", full.names = TRUE))
+  }
   
   # collect trait names and units from BIEN database
   traits_info <- bien_traits %>% 
-    select(trait_name,unit) %>%
+    dplyr::select(trait_name,unit) %>%
     distinct() %>%
     drop_na()
   
@@ -52,36 +68,36 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   
   # process continuous data from BIEN database
   tree_traits <- bien_traits %>% 
-    select(scrubbed_species_binomial,
-           trait_name,trait_value) %>%
+    dplyr::select(scrubbed_species_binomial,
+                  trait_name,trait_value) %>%
     group_by(scrubbed_species_binomial,trait_name) %>%
     summarise(trait_value = mean(as.numeric(trait_value), na.rm = TRUE)) %>%
     pivot_wider(names_from = trait_name,
                 values_from = trait_value) %>%
-    select(scrubbed_species_binomial,
-           `diameter at breast height (1.3 m)`,
-           `leaf nitrogen content per leaf dry mass`,
-           `leaf phosphorus content per leaf dry mass`,
-           `plant flowering begin`,
-           `plant flowering duration`,
-           `seed mass`,
-           `stem wood density`,
-           `vessel lumen area`,
-           `vessel number`,
-           `whole plant height`)
+    dplyr::select(scrubbed_species_binomial,
+                  `diameter at breast height (1.3 m)`,
+                  `leaf nitrogen content per leaf dry mass`,
+                  `leaf phosphorus content per leaf dry mass`,
+                  `plant flowering begin`,
+                  `plant flowering duration`,
+                  `seed mass`,
+                  `stem wood density`,
+                  `vessel lumen area`,
+                  `vessel number`,
+                  `whole plant height`)
   
   # process categorical data from BIEN database
   tree_traits2 <- bien_traits %>%
     pivot_wider(names_from = trait_name,
                 values_from = trait_value) %>%
-    select(scrubbed_species_binomial,
-           `whole plant sexual system`,
-           `whole plant dispersal syndrome`,
-           `flower pollination syndrome`,
-           `whole plant growth form`,
-           `whole plant woodiness`,
-           `whole plant vegetative phenology`,
-           `whole plant growth form diversity`) %>%
+    dplyr::select(scrubbed_species_binomial,
+                  `whole plant sexual system`,
+                  `whole plant dispersal syndrome`,
+                  `flower pollination syndrome`,
+                  `whole plant growth form`,
+                  `whole plant woodiness`,
+                  `whole plant vegetative phenology`,
+                  `whole plant growth form diversity`) %>%
     unique() 
   tree_traits2$`whole plant growth form` <- tolower(tree_traits2$`whole plant growth form`)
   tree_traits2 <- tree_traits2 %>%
@@ -105,8 +121,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   invisible(gc())
   
   # import the continent data (https://figshare.com/articles/dataset/Continent_Polygons/12555170)
-  continent <- read_sf("continent/Continents.shp")[,2] %>%
-    st_make_valid()
+  continent <- read_sf("continent/Continents.shp")[,2]
   
   # intersect ecoregions and continents shapefiles
   biomes <- st_intersection(st_make_valid(biomes),st_make_valid(continent))
