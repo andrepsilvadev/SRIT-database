@@ -90,9 +90,9 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   
   # table with info on the n of species per dataset
   datasets_info <- tibble(
-    dataset = c("iucn","iucn+bien"),
+    dataset = c("iucn","iucn+bien_continuous","iucn+bien_categorical"),
     n_sps = c(length(unique(sps_traits$sci_name)),
-              length(unique(tree_traits$scrubbed_species_binomial))+
+              length(unique(tree_traits$scrubbed_species_binomial)),
               length(unique(tree_traits2$scrubbed_species_binomial))))
   invisible(gc())
   
