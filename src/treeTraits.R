@@ -1,6 +1,6 @@
 ## Tree traits ##
 ## Afonso Barrocal ##
-## February 18th, 2025 ##
+## February 20th, 2025 ##
 
 ##########################################################################
 ## Things to change: ##
@@ -32,7 +32,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
     st_drop_geometry()
   invisible(gc())
   
-  # import BIEN database (https://doi.org/10.1111/2041-210X.12861)
+  # import life-history traits from BIEN database (https://doi.org/10.1111/2041-210X.12861)
   bien_traits <- do.call(rbind,lapply(sps_traits$sci_name, FUN = BIEN_trait_species))
   
   # collect trait names and units from BIEN database
