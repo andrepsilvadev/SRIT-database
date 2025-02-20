@@ -119,7 +119,7 @@ if (length(list.files(pattern = "treeTraits_.*\\.csv$")) != 0) {
   # subset of the necessary variables (biome and sps scientific names)
   sps_biome <- biomes %>%
     dplyr::select('BIOME_NAME', 'sci_name', "CONTINENT") %>% 
-    dplyr::filter(sci_name %in% total_target_sps) %>%
+    dplyr::filter(sci_name %in% sps_traits$sci_name) %>%
     st_drop_geometry() %>%
     distinct()
   invisible(gc())
