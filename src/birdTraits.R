@@ -1,6 +1,6 @@
 ## Birds traits ##
 ## Afonso Barrocal ##
-## February 19th, 2025 ##
+## March 1st, 2025 ##
 
 ####################################################################################
 ##                                                                                ##
@@ -39,6 +39,14 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
     ensure_multipolygons() %>%
     st_make_valid()
   invisible(gc())
+
+  # create vector with target bird families
+  target_birds <- c("Bucerotidae", # hornbills
+                    "Bucorvidae", # hornbills
+                    "Ramphastidae", # toucans
+                    "Picidae") # woodpeckers
+
+  
     
   # import traits from the IUCN shapefile
   sps_traits <- unique(IUCN_birds$sci_name)
