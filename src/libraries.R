@@ -1,6 +1,6 @@
 ## libraries ##
 ## Andre P. Silva & Afonso Barrocal ##
-## February 19th, 2025 ##
+## March 1st, 2025 ##
 
 library(easypackages)
 easypackages::packages(
@@ -28,6 +28,7 @@ easypackages::packages(
   "gdalUtilities",
   "BIEN",
   "dismo",
+  "taxize",
   prompt = FALSE)
 
 ### trait data is on github
