@@ -41,12 +41,15 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   invisible(gc())
 
   # create vector with target bird families
-  target_birds <- c("Bucerotidae", # hornbills
-                    "Bucorvidae", # hornbills
-                    "Ramphastidae", # toucans
-                    "Picidae") # woodpeckers
+  target_birds_families <- c("Bucerotidae", # hornbills
+                             "Bucorvidae", # hornbills
+                             "Ramphastidae", # toucans
+                             "Picidae") # woodpeckers
 
-  
+  # retrieve species
+  target_bird_species <- taxize::downstream(target_birds_families,
+                                            downto = "species",
+                                            db = "gbif")
     
   # import traits from the IUCN shapefile
   sps_traits <- unique(IUCN_birds$sci_name)
