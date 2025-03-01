@@ -49,10 +49,20 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   # retrieve species
   target_bird_species <- taxize::downstream(target_birds_families,
                                             downto = "species",
-                                            db = "gbif")
-    
+                                            db = "gbif") %>%
+    do.call(rbind,.) %>%
+    dplyr::select(name)
+  target_bird_species <- unique(target_bird_species$name)
+
+  # select target species from IUCN shapefile
+  IUCN_birds_target <- IUCN_birds[IUCN_birds$sci_name %in% target_bird_species,]
+
+  # remove unnecessary objects
+  rm(target_birds_families,target_bird_species)
+  invisible(gc())
+  
   # import traits from the IUCN shapefile
-  sps_traits <- unique(IUCN_birds$sci_name)
+  sps_traits <- unique(IUCN_birds_target$sci_name)
   
   # import AVONET data (https://doi.org/10.1111/ele.13898)
   avonet <- read_excel("trait_datasets/AVONET Supplementary dataset 1.xlsx", 
@@ -77,27 +87,26 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   invisible(gc())
   
   # import the continent data (https://figshare.com/articles/dataset/Continent_Polygons/12555170)
-  continent <- read_sf("continent/Continents.shp")[,2] %>%
-    st_make_valid()
+  continent <- read_sf("continent/Continents.shp")[,2]
   
   # intersect ecoregions and continents shapefiles
   biomes <- st_intersection(st_make_valid(biomes),st_make_valid(continent))
   invisible(gc())
   
   # intersect IUCN and ecoregions and continents shapefiles
-  biomes <- st_intersection(st_make_valid(biomes),st_make_valid(IUCN_birds))
+  biomes <- st_intersection(st_make_valid(biomes),st_make_valid(IUCN_birds_target))
   invisible(gc())
   
   # subset of the necessary variables (biome and sps scientific names)
   sps_biome <- biomes %>%
     dplyr::select('BIOME_NAME', 'sci_name', "CONTINENT") %>% 
-    dplyr::filter(sci_name %in% total_target_sps) %>%
+  # dplyr::filter(sci_name %in% total_target_sps) %>%
     st_drop_geometry() %>%
     distinct()
   invisible(gc())
   
   # remove unnecessary objects to increase internal memory
-  rm(biomes,continent,IUCN_birds)
+  rm(biomes,continent,IUCN_birds_target)
   invisible(gc())
   
   ################################################################################
