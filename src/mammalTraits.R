@@ -58,8 +58,9 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   HomeRange_sps <- HomeRange_sps %>%
     group_by(Species) %>%
     mutate(Max_Home_Range_km2 = max(Home_Range_km2),
+           Mean_HomeRange_km2 = mean(Home_Range_km2),
            Min_Home_Range_km2 = min(Home_Range_km2)) %>%
-    dplyr::select(Species, Max_Home_Range_km2,Min_Home_Range_km2) %>%
+    dplyr::select(Species, Max_Home_Range_km2,Min_Home_Range_km2, Mean_HomeRange_km2) %>%
     distinct(Species, .keep_all = TRUE)
   
   ################################################################################
@@ -82,7 +83,7 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   
   # download PANTHERIA data
   pantheria <- read_tsv("https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt") %>%
-    replace_with_na_all(condition = ~.x == -999)
+    naniar::replace_with_na_all(condition = ~.x == -999)
   
   # import SANTINI et al 2022
   santini2022 <- read_excel("trait_datasets/geb13476-sup-0002-tables1.xls") #reports error of RMSE_bvs instead of numeric (it's ok)
@@ -104,7 +105,7 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   # import the biome data
   biomes <- read_sf("ecoregions/Ecoregions2017.shp") %>%
     st_make_valid() %>%
-    replace_with_na(list(BIOME_NAME = c("N/A"))) %>%
+    naniar::replace_with_na(list(BIOME_NAME = c("N/A"))) %>%
     select('BIOME_NAME') %>%
     distinct() %>%
     drop_na()
@@ -146,9 +147,9 @@ if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
     left_join(HomeRange_sps, by = c('sci_name' ='Species')) %>%
     left_join(sps_biome, by = c('sci_name' = 'sci_name')) %>%
     dplyr::select('sci_name', 'family.x', 'order_', 'BIOME_NAME', 'CONTINENT',
-                  'Diet.Meat', 'Diet.Plant', 'Mass.g', 'max_longevity_d', 'weaning_mass_g',
+                  'Diet.Meat', 'Diet.Plant', 'Mass.g', 'max_longevity_d', 'weaning_mass_g','age_first_reproduction_d',
                   'litter_size_n', 'litters_per_year_n', 'Mating System','PredMd','up75',
-                  'trophic_level', 'Max_Home_Range_km2', 'Min_Home_Range_km2') %>%
+                  'trophic_level','Mean_HomeRange_km2', 'Max_Home_Range_km2', 'Min_Home_Range_km2') %>%
     distinct() %>% 
     drop_na()
   
