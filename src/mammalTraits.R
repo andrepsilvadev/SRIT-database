@@ -1,6 +1,6 @@
 ## Mammal traits ##
 ## Afonso Barrocal & Inês Silva ##
-## February 17th, 2025 ##
+## March 18th, 2025 ##
 
 ##########################################################################
 ## Things to change: ##
