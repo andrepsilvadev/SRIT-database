@@ -1,4 +1,6 @@
 # trait data updates
+#20250328 (MIS)
+OpenForests - https://www.cambridge.org/core/journals/environmental-data-science/article/openforest-a-data-catalog-for-machine-learning-in-forest-monitoring/F62FBEADFF8E3A10C6EDA789D7D180C6
 #20250327 (MIS)
 - Tree traits are still imcomplete see next links for more info on databases (used and to still look at)
     - Script: https://github.com/andrepsilvadev/SRIT-database/blob/4e124479c5dd238a17ad78b4e3c4f069a4e388a9/src/TreeTraits_MIS.R
