@@ -1,4 +1,11 @@
 # trait data updates
+#20250502 (MIS)
+Oii tava a ver coisas minhas e lembrei que isto talvez ajude a Filipa.
+Não sei o quão comum isto de haver varios nomes para a msm sps é nos mammals, mas para trees e birds talvez sirva.
+Neste repo eles tem um script para, antes de fazer a search nas databases, criar uma lista de sinonimos para cada espécies, usando o rfishbase package. Talvez no caso do NatPoKe se possa usar o taxize or rgibf?
+vê-se achas util para integrar na pipeline do natPoKe e  procurar mais traits para esses target groups https://github.com/genner-lab/meta-fish-lib/blob/main/scripts/load-synonyms.R
+https://onlinelibrary.wiley.com/doi/10.1111/jfb.14852 (escusas de ler o paper mas fica só pq sim)
+
 #20250328 (MIS)
 OpenForests - https://www.cambridge.org/core/journals/environmental-data-science/article/openforest-a-data-catalog-for-machine-learning-in-forest-monitoring/F62FBEADFF8E3A10C6EDA789D7D180C6
 #20250327 (MIS)
