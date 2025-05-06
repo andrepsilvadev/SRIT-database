@@ -1,4 +1,18 @@
 # trait data updates
+
+#20250506 (MIS)
+
+Encontrei algo que deve ajudar com os birds. AVIBASE utiliza muitas vezes este paper:
+https://conbio.onlinelibrary.wiley.com/doi/epdf/10.1111/cobi.13486.
+eles recolhem dados da literatura para várias sps e depois têm duas abordagens: 
+  (1) modelar com glmm
+  (2) extrapolar valores por outros das msm familias/genus/order.
+De acordo com os resultados a estimativas por modelação batem mais com os poucos
+valores publicados que existem. 
+Usando os dados do supplementary material passamos de 12 picapaus mais 1 tucano,
+para 112 birds entre picapaus, tucanos e calaus. 105 com mais de 30 occurrences
+
+
 #20250502 (MIS)
 Oii tava a ver coisas minhas e lembrei que isto talvez ajude a Filipa.
 Não sei o quão comum isto de haver varios nomes para a msm sps é nos mammals, mas para trees e birds talvez sirva.
