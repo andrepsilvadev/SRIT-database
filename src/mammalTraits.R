@@ -9,6 +9,7 @@
 ##   3. Make more comments;
 ##   4. (...)
 ##########################################################################
+source("./libraries.R")
 
 if (length(list.files(pattern = "mammalTraits_.*\\.csv$")) != 0) {
   mammalTraits_data <- read_csv(list.files(pattern = "mammalTraits_.*\\.csv$"))
