@@ -39,6 +39,8 @@ d <- occ_download_get(
     key = '0055274-241126133413365',
     path = "./trait_datasets"
 )
+# with the download key we can go directly to gbif and download the folder with
+# the data without running the script again
 
 # import download to current session
 gbif_data <- occ_download_import(d)
