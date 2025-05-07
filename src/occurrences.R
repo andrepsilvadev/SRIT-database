@@ -1,5 +1,5 @@
 ## Taxa occurrences ##
-## Andre P. Silva & Afonso Barrocal ##
+## Andre P. Silva, Afonso Barrocal & Inês Silva##
 ## January 7th, 2025 ##
 
 # Use IUCN species names and ranges
@@ -19,12 +19,15 @@ gbif_taxon_keys <-
     filter(!matchType == "NONE") %>% #get matched names
     pull(usageKey) #get the GBIF taxon keys
 
+# to download datasets from gbif credentials are necessary.
+# Register at https://www.gbif.org/user/profile
+
 test <- occ_download(
     pred_in("taxonKey", gbif_taxon_keys),
     format = "SIMPLE_CSV",
-    user = "maria_ines_silva", # needs registration before, I think
-    pwd = "SRIT2024!",
-    email = "ncisines@gmail.com")
+    user = "" , # ADD USERNAME HERE
+    pwd = "", # ADD PASSWORD HERE
+    email = "") # ADD EMAIL ASSOCIATE WITH ACCOUNT HERE
 
 # check if download is finished
 occ_download_wait('0055274-241126133413365')
