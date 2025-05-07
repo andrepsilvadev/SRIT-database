@@ -1,6 +1,6 @@
 ## Taxa occurrences ##
+
 ## Andre P. Silva, Afonso Barrocal & Inês Silva ##
-## January 7th, 2025 ##
 
 # Use IUCN species names and ranges
 # downloaded manually, later find a way to download automatically through R
