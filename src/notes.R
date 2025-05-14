@@ -1,5 +1,10 @@
 # trait data updates
 
+#20250512 (MIS)
+# info on the links between EBVs and GBIF data
+https://github.com/EBVcube/ebv-workshop2024/blob/main/slides/02_session_EBVCube-workshop.pdf (WORKSHOP PDF)
+https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12359 (PAPER)
+
 #20250506 (MIS)
 
 Encontrei algo que deve ajudar com os birds. AVIBASE utiliza muitas vezes este paper:
