@@ -1,5 +1,8 @@
 # trait data updates
 
+#20250530 (APS)
+https://cornelllabofornithology.github.io/auk/
+
 #20250512 (MIS)
 # info on the links between EBVs and GBIF data
 https://github.com/EBVcube/ebv-workshop2024/blob/main/slides/02_session_EBVCube-workshop.pdf (WORKSHOP PDF)
