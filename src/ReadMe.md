@@ -1,6 +1,6 @@
 # SRIT - database modules
 
-Note: it is suggested to run the scripts in the order below
+*Note: it is suggested to run the scripts in the order below*
 
 [![Developer Access](https://img.shields.io/badge/Google%20Drive-Developer-blue?logo=google-drive&logoColor=white)](https://drive.google.com/drive/folders/1gur2K5EGnqHHCz1oui8ms6ZOz8LxGFQD?usp=drive_link) [![User Access](https://img.shields.io/badge/Google%20Drive-User-green?logo=google-drive&logoColor=white)](https://drive.google.com/drive/folders/1NFKtJSeuMdrmDR3_VyQ_AWVj3g9cWhKe?usp=drive_link)
 
@@ -15,11 +15,14 @@ Note: it is suggested to run the scripts in the order below
 Trait data required by the scripts are available in the **SRIT shared Drive folder**, using the corresponding names.
 
 `mammalTraits.R` \<- (v2 being updated by Afonso)\
+<br>
+`birdsDistributions_preProcessing.R` <- Read and handle bird species distributions .gpkg file from IUCN/BirdLife, and intersect with ecorregions .shp file from Dinerstein et al. 2017  
+<br>
 `birdTraits.R` \<- builds a comprehensive trait database for bird species that combines multiple open-access datasets
 
-⚙️ What the Scripts Do
+### ⚙️ What the Scripts Do
 
-Each script follows a consistent pipeline:
+Each script (`mammalTraits.R` & `birdTraits.R`)  follows a consistent pipeline:
 
 1. **Checks** for an existing `.csv` file — if found, it loads it directly.
 2. **Loads** species distribution data and intersects it with ecoregion .shp to filter our target species.
@@ -37,11 +40,11 @@ These are the primary sources used in the bird and mammal trait scripts. You can
 | Birds    | jetz2008_avianClutch.xlsx                | Clutch size                                          | [Jetz et al. 2008](https://doi.org/10.1371/journal.pbio.0060303) | ✅         |
 | Birds    | Amniote_Database_Aug_2015.csv | Body mass                                            | [Myhrvold et al. 2015](https://doi.org/10.1890/15-0846R.1) | ✅         |
 | Birds    | cobi13486-sup-002-tables2.xlsx             | Survival, reproduction, longevity                    | [Bird et al. 2020](https://doi.org/10.1111/cobi.13486) | ✅         |
-| Mammals  | [Dataset Name Placeholder]       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
-| Mammals  | [Dataset Name Placeholder]       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
-| Mammals  | [Dataset Name Placeholder]       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
-| Mammals  | [Dataset Name Placeholder]       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
-| Mammals  | [Dataset Name Placeholder]       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
+| Mammals  | Trait_data.csv       | [Trait description placeholder]                      | [Weblink](https://megapast2future.github.io/PHYLACINE_1.2/)           | ✅         |
+| Mammals  | PanTHERIA_1-0_WR05_Aug2008.txt       | [Trait description placeholder]                      | [Weblink](https://esapubs.org/archive/ecol/E090/184/PanTHERIA_1-0_WR05_Aug2008.txt)            | ⬜         |
+| Mammals  | geb13476-sup-0002-tables1.xls       | ABundance & carrying capacity                      | [URL / DOI Placeholder]            | ⬜         |
+| Mammals  | ADW_202404081457.xls       | Mating system                      | [URL / DOI Placeholder]            | ✅         |
+| Mammals  | trait_data_imputed.csv       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
 | Mammals  | [Dataset Name Placeholder]       | [Trait description placeholder]                      | [URL / DOI Placeholder]            | ⬜         |
 | None  | continent.shp       | World continents shapefile                     | [URL / DOI Placeholder]            | ✅         |
 | None  | Ecoregions2017.shp       | World Ecoregions shapefile                      | [Dinerstein et al. 2017](https://academic.oup.com/bioscience/article/67/6/534/3102935)            | ✅         |
