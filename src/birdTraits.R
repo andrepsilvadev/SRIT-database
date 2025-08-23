@@ -2,7 +2,7 @@
 ## Inês Silva & Afonso Barrocal ##
 ## 19 July 2025 ##
 
-setwd("C:/Users/User/OneDrive - Universidade de Lisboa (1)/ANDRE/NatPoKe")
+
 if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   birdTraits_data <- read_csv(list.files(pattern = "birdTraits_.*\\.csv$"))
 } else {
@@ -10,7 +10,7 @@ if (length(list.files(pattern = "birdTraits_.*\\.csv$")) != 0) {
   # Printing message
   cat(bold(red("No file detected:"),green("creating bird trait database...")))
   
-  # get started from an RDS object saved in this repo
+  # get started from a custom .csv file (built with birdsDistributions_preProcessing.R)
   birds_biomes <- read.csv("./traits/birdTraits/externalData/birds_intersection_biomes_2025-07-25.csv") %>% 
     rename(sci_name = sci_nam)
   
