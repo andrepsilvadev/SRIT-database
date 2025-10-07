@@ -1,5 +1,9 @@
 # trait data updates
 
+#20251007 (MIS)
+MoveTraits – A database for integrating animal behaviour into trait-based ecology
+https://www.biorxiv.org/content/10.1101/2025.03.15.643440v1.full
+
 #20250530 (APS)
 https://cornelllabofornithology.github.io/auk/
 
