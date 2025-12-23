@@ -7,7 +7,7 @@ docs - original data sources and methodology used for data compilation
 src - This directory contains the R scripts that collect and process trait collection.  
 
 Files for users and developers can be found at:  
-https://drive.google.com/drive/folders/1gur2K5EGnqHHCz1oui8ms6ZOz8LxGFQD?usp=drive_link 
+https://drive.google.com/drive/folders/1gur2K5EGnqHHCz1oui8ms6ZOz8LxGFQD?usp=drive_link  
 https://zenodo.org/records/17953408
 
 SRIT repository can be found at:  
