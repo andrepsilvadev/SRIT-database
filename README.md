@@ -1,8 +1,8 @@
 # SRIT-database (version 1.0 - December 2025) 
 Collects species trait data and builds global suitability landscapes for the Species Resilience Impact Tool (SRIT)
 
-Repository structure
-docs - original data sources and methodology used for data compilation
+Repository structure  
+docs - original data sources and methodology used for data compilation  
 
 src - This directory contains the R scripts that collect and process trait collection.  
 
